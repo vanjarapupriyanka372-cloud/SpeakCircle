@@ -1,0 +1,6 @@
+{
+  "name": "SpeakCircle - 1-to-1 English Speaking Practice",
+  "description": "Speak without fear. Practice 1-to-1 spoken English conversations with friendly peers across India in a private, judgment-free space.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
