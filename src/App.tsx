@@ -23,6 +23,7 @@ import { DiscoverScreen } from './components/DiscoverScreen';
 import { PracticeScreen } from './components/PracticeScreen';
 import { ProgressScreen } from './components/ProgressScreen';
 import { ProfileScreen } from './components/ProfileScreen';
+import { ChatBoardScreen } from './components/ChatBoardScreen';
 
 // Modals
 import { OnboardingModal } from './components/OnboardingModal';
@@ -148,6 +149,7 @@ export default function App() {
         <TopNav
           onOpenSafety={() => setShowSafetyCenter(true)}
           onOpenAdmin={() => setShowAdminDashboard(true)}
+          onOpenChat={() => setCurrentTab('chat')}
           activeScreen={currentTab}
         />
       )}
@@ -168,6 +170,7 @@ export default function App() {
               onToggleFearFree={() => handleUpdateUser({ fearFreeMode: !user.fearFreeMode })}
               onStartMatching={handleStartMatching}
               onOpenSafety={() => setShowSafetyCenter(true)}
+              onOpenChatBoard={() => setCurrentTab('chat')}
             />
           )}
 
@@ -176,6 +179,10 @@ export default function App() {
               onQuickMatchRegion={handleQuickMatchRegion}
               userState={user.state}
             />
+          )}
+
+          {currentTab === 'chat' && (
+            <ChatBoardScreen onOpenVoiceRoom={handleStartMatching} />
           )}
 
           {currentTab === 'practice' && (

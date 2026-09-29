@@ -1,13 +1,14 @@
 import React from 'react';
-import { ShieldCheck, ShieldAlert } from 'lucide-react';
+import { ShieldCheck, ShieldAlert, Bot } from 'lucide-react';
 
 interface TopNavProps {
   onOpenSafety: () => void;
   onOpenAdmin: () => void;
+  onOpenChat?: () => void;
   activeScreen: string;
 }
 
-export const TopNav: React.FC<TopNavProps> = ({ onOpenSafety, onOpenAdmin }) => {
+export const TopNav: React.FC<TopNavProps> = ({ onOpenSafety, onOpenAdmin, onOpenChat, activeScreen }) => {
   return (
     <header className="sticky top-0 z-30 w-full border-b border-stone-200/80 bg-stone-50/90 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
@@ -35,6 +36,21 @@ export const TopNav: React.FC<TopNavProps> = ({ onOpenSafety, onOpenAdmin }) => 
 
         {/* Zone 3: Actions */}
         <div className="flex items-center gap-2">
+          {onOpenChat && (
+            <button
+              onClick={onOpenChat}
+              className={`flex h-9 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium shadow-xs transition-all active:scale-95 ${
+                activeScreen === 'chat'
+                  ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
+                  : 'border-stone-200 bg-white text-stone-700 hover:bg-stone-50'
+              }`}
+              title="AI English Chat Board"
+            >
+              <Bot className="h-3.5 w-3.5 text-emerald-700" />
+              <span className="hidden sm:inline">Chat Board</span>
+            </button>
+          )}
+
           <button
             onClick={onOpenSafety}
             className="flex h-9 items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-3 text-xs font-medium text-stone-700 shadow-xs hover:bg-stone-50 active:scale-95 transition-all"

@@ -13,7 +13,9 @@ import {
   ShieldCheck, 
   Clock, 
   HeartHandshake, 
-  Globe 
+  Globe,
+  Bot,
+  ArrowRight
 } from 'lucide-react';
 import heroImage from '../assets/images/hero_speakcircle_banner_1790583242753.jpg';
 
@@ -29,6 +31,7 @@ interface HomeScreenProps {
   onToggleFearFree: () => void;
   onStartMatching: () => void;
   onOpenSafety: () => void;
+  onOpenChatBoard: () => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
@@ -43,6 +46,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onToggleFearFree,
   onStartMatching,
   onOpenSafety,
+  onOpenChatBoard,
 }) => {
   const modes: { id: ConversationMode; label: string; desc: string; icon: React.ElementType }[] = [
     {
@@ -168,6 +172,43 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               }`}
             />
           </div>
+        </div>
+      </div>
+
+      {/* AI English Chat Board Spotlight Card */}
+      <div className="mb-5 overflow-hidden rounded-2xl border border-stone-200/90 bg-gradient-to-br from-emerald-50/70 via-white to-stone-50 p-4 shadow-xs">
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white shadow-xs">
+              <Bot className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="font-display text-sm font-bold text-stone-900">
+                  AI English Chat Board
+                </h3>
+                <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-800">
+                  n8n Live
+                </span>
+              </div>
+              <p className="mt-0.5 text-xs text-stone-600 leading-relaxed">
+                Practice 1-on-1 with Nathan, your AI English Coach. Ask interview questions, vocabulary guidance, or pronounce phrases with voice output.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-3 flex items-center justify-between border-t border-emerald-100/60 pt-3">
+          <div className="flex items-center gap-1.5 text-[11px] text-stone-500">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+            <span>Always available · Zero judgment</span>
+          </div>
+          <button
+            onClick={onOpenChatBoard}
+            className="flex items-center gap-1.5 rounded-xl bg-emerald-700 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-800 active:scale-95 transition-all"
+          >
+            <span>Open Chat Board</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </button>
         </div>
       </div>
 
